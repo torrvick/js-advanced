@@ -37,7 +37,8 @@ export class Manager {
 			console.log(`Клиент ${client.firstname} заказал:`);
 			const clientsOrder = this.#orders.get(client);
 			for (const [name, details] of clientsOrder) {
-				console.log(`\t${details.type} ${name} - ${details.quantity}; Готовит повар ${this.#staff.getWorkerBySpec(details.type)}`);
+				const chief = this.#staff.getWorkerBySpec(details.type);
+				console.log(`\t${details.type} ${name} - ${details.quantity}; Готовит повар ${chief.getName()}`);
 			}
 		} catch (e) {
 			console.log(e.message);

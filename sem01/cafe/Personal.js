@@ -9,7 +9,7 @@ export class Personal {
 		for (const worker of this.#workers) {
 			const workerSpec = worker.getSpec();
 			if (workerSpec.getName() === spec) {
-				return worker.getName();
+				return worker;
 			}
 		}
 	}
