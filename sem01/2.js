@@ -1,11 +1,10 @@
 'use strict';
-
 /*
 ###Задание 2
-Вы управляете рестораном, в котором работают разные повара, специализирующиеся 
+Вы управляете рестораном, в котором работают разные повара, специализирующиеся
 на определенных блюдах. Клиенты приходят и делают заказы на разные блюда.
-Необходимо реализовать функцию newOrder. Создавать вспомогательные функции, 
-коллекции, не запрещается. Старайтесь использовать коллекции Map/Set, где это 
+Необходимо реализовать функцию newOrder. Создавать вспомогательные функции,
+коллекции, не запрещается. Старайтесь использовать коллекции Map/Set, где это
 актуально. Представленный ниже код должен работать.
 
 Повара и их специализации:
@@ -25,122 +24,12 @@
 Десерт Чизкейк
 */
 
-class Product {
-	#name;
-	constructor(name) {
-		this.#name = name;
-	}
-
-	getName() {
-		return this.#name;
-	}
-}
-
-class Menu {
-	#menu = new Map();
-
-	addVariant(product, name) {
-		if (!this.#menu.has(product)) {
-			this.#menu.set(product, new Set());
-		}
-		this.#menu.get(product).add(name);
-	}
-
-	availableProducts() {
-		const availableProducts = new Map();
-		for (const [product, names] of this.#menu) {
-			availableProducts.set(product.getName(), names);
-		}
-		return availableProducts;
-	}
-}
-
-class Chief {
-	#spec;
-	#name;
-	constructor(spec, name) {
-		this.#spec = spec;
-		this.#name = name;
-	}
-
-	getSpec() {
-		return this.#spec;
-	}
-
-	getName() {
-		return this.#name;
-	}
-}
-
-class Personal {
-	#workers = [];
-
-	addWorker(worker) {
-		this.#workers.push(worker);
-	}
-
-	getWorkerBySpec(spec) {
-		for (const worker of this.#workers) {
-			const workerSpec = worker.getSpec();
-			if (workerSpec.getName() === spec) {
-				return worker.getName();
-			}
-		}
-	}
-}
-
-// Посетитель ресторана.
-class Client {
-	constructor(firstname, lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-}
-
-// Вам необходимо реализовать класс, который управляет заказами и поварами.
-class Manager {
-	#orders;
-	#menu;
-	constructor(currentMenu) {
-		this.#orders = new Map();
-		this.#menu = currentMenu;
-	}
-
-	newOrder(client, ...orderPositions) {
-		if (!this.#orders.has(client)) {
-			this.#orders.set(client, new Map());
-		}
-
-		try {
-			for (const orderProduct of orderPositions) {
-				const clientOrder = this.#orders.get(client);
-
-				const avaliableProductTypes = this.#menu.availableProducts().get(orderProduct.type);
-				if (!avaliableProductTypes) {
-					throw new Error(`${orderProduct.type} - этот вид блюд не подается`);
-				}
-
-				if (!avaliableProductTypes.has(orderProduct.name)) {
-					throw new Error(`${orderProduct.type} "${orderProduct.name}" - такого блюда не существует`);
-				}
-
-				if (!clientOrder.has(orderProduct.name)) {
-					clientOrder.set(orderProduct.name, { quantity: orderProduct.quantity, type: orderProduct.type });
-				} else {
-					clientOrder.get(orderProduct.name).quantity += orderProduct.quantity;
-				}
-			}
-
-			console.log(`Клиент ${client.firstname} заказал:`);
-			const clientsOrder = this.#orders.get(client);
-			for (const [name, details] of clientsOrder) {
-				console.log(`\t${details.type} ${name} - ${details.quantity}; ` + `Готовит повар ${staff.getWorkerBySpec(details.type)}`);
-			}
-		} catch (e) {
-			console.log(e.message);
-		}
-	}
-}
+import { Product } from './cafe/Product.js';
+import { Menu } from './cafe/Menu.js';
+import { Chief } from './cafe/Chief.js';
+import { Personal } from './cafe/Personal.js';
+import { Client } from './cafe/Client.js';
+import { Manager } from './cafe/Manager.js';
 
 const pizza = new Product('Пицца');
 const sushi = new Product('Суши');
@@ -162,14 +51,14 @@ const chiefOleg = new Chief(pizza, 'Олег');
 const chiefAndrey = new Chief(sushi, 'Андрей');
 const chiefAnna = new Chief(dessert, 'Анна');
 
-const staff = new Personal();
+export const staff = new Personal();
 
 staff.addWorker(chiefOleg);
 staff.addWorker(chiefAndrey);
 staff.addWorker(chiefAnna);
 
 // Можно передать внутрь конструктора что-либо, если необходимо.
-const manager = new Manager(mainMenu);
+const manager = new Manager(mainMenu, staff);
 
 // Вызовы ниже должны работать верно, менять их нельзя, удалять тоже.
 manager.newOrder(
