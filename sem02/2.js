@@ -114,7 +114,7 @@ addReviewTextEls.forEach((reviewInputEl) => {
 	});
 });
 
-document.addEventListener('click', (e) => {
+document.querySelector('.root').addEventListener('click', (e) => {
 	const target = e.target;
 	if (target.classList.contains('review-add-btn')) {
 		e.preventDefault();
@@ -153,8 +153,6 @@ document.addEventListener('click', (e) => {
 		addReviewTextEl.value = '';
 		statusEl.textContent = '';
 		addReviewTextEl.style.height = 'auto';
-
-		console.log(DB);
 	}
 
 	if (target.classList.contains('reviews-summary')) {
