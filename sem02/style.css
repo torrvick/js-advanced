@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.center {
+  margin: 20px auto;
+  width: 50vw;
+}
+
+.product {
+  margin-bottom: 16px;
+}
+.product-desc {
+  margin-bottom: 8px;
+}
+.product-id {
+  font-size: 13px;
+  color: #ccc;
+}
+.product-reviews .reviews-summary {
+  display: inline;
+}
+.product-reviews .reviews-summary:hover {
+  cursor: pointer;
+}
+.product-reviews .reviews-summary::before {
+  content: "\f0fe";
+  font-family: "Font Awesome 5 free";
+  font-size: 14px;
+  margin-right: 10px;
+}
+.product-reviews[open] .reviews-summary::before {
+  content: "\f146";
+  margin-right: 10px;
+}
+.product-reviews[open] {
+  border-bottom: 1px solid #ccc;
+}
+.product-reviews .reviews-container {
+  padding: 10px 40px 0px 40px;
+}
+.product-reviews .review {
+  margin-bottom: 16px;
+}
+.product-reviews .review-title {
+  font-size: 14px;
+  color: #ccc;
+}
+.product-reviews .review-form {
+  position: relative;
+}
+.product-reviews .review-status {
+  position: absolute;
+  left: 10px;
+  bottom: 25px;
+  font-size: 14px;
+}
+.product-reviews .review-status.error {
+  color: red;
+}
+.product-reviews .review-status.success {
+  color: green;
+}
+.product-reviews .review-add-btn {
+  position: absolute;
+  right: -10px;
+  bottom: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.product-reviews .review-input {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  resize: none;
+  padding: 10px 10px 20px 10px;
+}/*# sourceMappingURL=style.css.map */
