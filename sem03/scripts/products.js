@@ -4,7 +4,7 @@ let products = getProducts();
 
 const rootEl = document.querySelector('.root');
 
-rootEl.innerHTML = getProductHtml();
+rootEl.innerHTML = getProductsHtml();
 
 rootEl.addEventListener('click', ({ target }) => {
 	if (target.closest('.reviews-toggle')) {
@@ -29,7 +29,7 @@ rootEl.addEventListener('click', ({ target }) => {
 	}
 });
 
-function getProductHtml() {
+function getProductsHtml() {
 	return products
 		.map((product) => {
 			return `
@@ -51,12 +51,12 @@ function getReviewsHtml(reviews) {
 	return reviews
 		.map((review) => {
 			return `
-            <div class="review" data-id="${review.id}">
-                <p class="review-text">${review.text}</p>
-                <button class="review-remove">
-                    <i class="fa-regular fa-trash-can"></i>
-                </button>
-            </div>
+                <div class="review" data-id="${review.id}">
+                    <p class="review-text">${review.text}</p>
+                    <button class="review-remove">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </div>
             `;
 		})
 		.join('');
