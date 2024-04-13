@@ -70,7 +70,7 @@ const DB = initialData;
 const rootEl = document.querySelector('.root');
 
 for (const item of DB) {
-	const { id, product, reviews } = item;
+	const { id, name: product, reviews } = item;
 	rootEl.innerHTML += `
         <div class="product" data-prodid="${id}">
             <div class="product-desc">
@@ -159,7 +159,9 @@ document.querySelector('.root').addEventListener('click', (e) => {
 		const openedReviewsEls = document.querySelectorAll('.product-reviews[open]');
 		openedReviewsEls.forEach((openedEl) => {
 			openedEl.removeAttribute('open');
+			if (openedEl == target.parentNode) {
+				e.preventDefault();
+			}
 		});
 	}
 });
-

@@ -1,0 +1,131 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import url("https://use.fontawesome.com/releases/v6.5.0/css/all.css");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.center {
+  margin: 20px auto;
+  padding: 0 20px;
+  max-width: 768px;
+}
+
+.add-product {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.root {
+  position: relative;
+}
+
+.product-input {
+  border-radius: 5px;
+  border: 1px solid #767676;
+  padding: 10px;
+  z-index: 1;
+}
+
+.suggestion {
+  position: absolute;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  background: #e9e8e8;
+  width: 728px;
+  top: 35px;
+  z-index: 0;
+  padding: 8px 10px 3px;
+  font-size: 12px;
+  color: #767676;
+  display: none;
+}
+
+.suggestion.active {
+  display: block;
+  cursor: pointer;
+}
+
+.review-input {
+  border-radius: 5px;
+  resize: none;
+  padding: 10px;
+  min-height: 64px;
+}
+
+.add-review {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.product {
+  margin-bottom: 20px;
+}
+.product-name {
+  display: inline;
+  margin-right: 10px;
+  align-self: baseline;
+}
+.product-heading {
+  margin-bottom: 5px;
+  display: flex;
+}
+.product .reviews-toggle {
+  border: none;
+  display: block;
+  padding-bottom: 3px;
+  background-color: #ffffff;
+  text-decoration: dotted underline;
+  cursor: pointer;
+}
+
+.reviews-toggle {
+  align-self: end;
+}
+.reviews-toggle::before {
+  content: "Показать отзывы";
+}
+.reviews-toggle.opened::before {
+  content: "Скрыть отзывы";
+}
+
+.reviews {
+  padding-left: 20px;
+  display: none;
+}
+.reviews.opened {
+  display: block;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  padding: 7px 0 7px 10px;
+  border-bottom: 1px #ccc solid;
+  border-left: 1px #ccc solid;
+}
+.review-text {
+  flex-grow: 1;
+  margin-right: 5px;
+}
+.review-remove {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+  color: red;
+  padding-right: 10px;
+}
+.review:last-child {
+  border-bottom-left-radius: 10px;
+}
+.review:hover {
+  background-color: #ececec;
+}/*# sourceMappingURL=style.css.map */
