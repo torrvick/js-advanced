@@ -87,16 +87,13 @@ $content-padding: 20px;
         background-color: #ffffff;
         text-decoration: dotted underline;
         cursor: pointer;
-    }
-}
-
-.reviews-toggle {
-    align-self: end;
-    &::before {
-        content: "Показать отзывы";
-    }
-    &.opened::before {
-        content: "Скрыть отзывы";
+        align-self: end;
+        &::before {
+            content: "Показать отзывы";
+        }
+        &.opened::before {
+            content: "Скрыть отзывы";
+        }
     }
 }
 
@@ -116,7 +113,7 @@ $content-padding: 20px;
     border-left: 1px #ccc solid;
     &-text {
         flex-grow: 1;
-        margin-right: 5px;
+        padding-right: 50px;
     }
     &-remove {
         border: none;

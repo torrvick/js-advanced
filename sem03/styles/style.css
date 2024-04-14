@@ -84,15 +84,12 @@
   background-color: #ffffff;
   text-decoration: dotted underline;
   cursor: pointer;
-}
-
-.reviews-toggle {
   align-self: end;
 }
-.reviews-toggle::before {
+.product .reviews-toggle::before {
   content: "Показать отзывы";
 }
-.reviews-toggle.opened::before {
+.product .reviews-toggle.opened::before {
   content: "Скрыть отзывы";
 }
 
@@ -113,7 +110,7 @@
 }
 .review-text {
   flex-grow: 1;
-  margin-right: 5px;
+  padding-right: 50px;
 }
 .review-remove {
   border: none;
